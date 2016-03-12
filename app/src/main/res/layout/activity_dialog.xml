@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88bababa"
+    tools:context="com.ulutsoft.mamtil.DialogActivity"
+    android:orientation="vertical">
+
+    <ListView
+        android:layout_margin="5dp"
+        android:id="@+id/conversation_list"
+        android:divider="@null"
+        android:listSelector="#00FFFFFF"
+        tools:listitem="@layout/dialog"
+        android:dividerHeight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+</LinearLayout>

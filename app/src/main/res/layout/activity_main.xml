@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ulutsoft.mamtil.utils.MenuLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/main_background"
+        android:layout_height="50dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/main_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:stretchColumns="*"
+            android:padding="30dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button_vocabulary"
+                    android:text="Создук"
+                    android:padding="15dp"
+                    android:drawableTop="@android:drawable/ic_menu_help"
+                    android:layout_column="0"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:id="@+id/button_conversation_group"
+                    android:text="Разгаворник"
+                    android:padding="15dp"
+                    android:drawableTop="@android:drawable/ic_menu_manage"
+                    android:layout_column="1"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="5dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button_dialog"
+                    android:text="Диалог"
+                    android:padding="15dp"
+                    android:drawableTop="@android:drawable/ic_dialog_info"
+                    android:layout_column="0"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:id="@+id/button_speech_studio"
+                    android:text="Спиич студио"
+                    android:padding="15dp"
+                    android:drawableTop="@android:drawable/ic_btn_speak_now"
+                    android:layout_column="1"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="5dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button_grammar"
+                    android:text="Граматика"
+                    android:layout_column="0"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:id="@+id/button_test"
+                    android:text="Тест Кнопка 3"
+                    android:layout_column="1"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="5dp"/>
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
+
+</com.ulutsoft.mamtil.utils.MenuLayout>

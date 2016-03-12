@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88bababa"
+    tools:context="com.ulutsoft.mamtil.ConversationActivity"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/conversation_list"
+        tools:listitem="@layout/conversation"
+        android:layout_margin="10dp"
+        android:divider="#fdc656"
+        android:dividerHeight="0.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

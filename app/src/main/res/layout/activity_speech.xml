@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ulutsoft.mamtil.VocabularyActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/card"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="250dp"
+        android:layout_height="250dp">
+
+        <TextView
+            android:id="@+id/from_word"
+            android:text="From"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/to_word"
+            android:text="TO"
+            android:textSize="20sp"
+            android:paddingTop="20dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:textColor="#cf3434"
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:padding="20dp"
+        android:background="@color/title"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Запись"
+            android:layout_marginRight="20dp"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:id="@+id/button_rp" />
+
+        <Button
+            android:text="Try again"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:id="@+id/button_try"
+            android:enabled="false" />
+
+    </LinearLayout>
+
+</LinearLayout>
