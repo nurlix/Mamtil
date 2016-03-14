@@ -18,16 +18,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:label="Башкы бет"/>
-        <activity android:name=".VocabularyActivity" android:label="Создук"/>
-        <activity android:name=".ConversationActivity"/>
-        <activity android:name=".ConversationCategoryActivity" android:label="Разгаворник"/>
-        <activity android:name=".SpeechActivity" android:label="Суйлошмо"/>
-        <activity android:name=".DialogActivity"/>
-        <activity android:name=".DialogGroupActivity" android:label="Диалог"/>
+        <activity
+            android:name=".MainActivity"
+            android:label="Башкы бет" />
+        <activity
+            android:name=".VocabularyActivity"
+            android:label="Создук" />
+        <activity android:name=".ConversationActivity" />
+        <activity
+            android:name=".ConversationCategoryActivity"
+            android:label="Разгаворник" />
+        <activity
+            android:name=".SpeechActivity"
+            android:label="Суйлошмо" />
+        <activity android:name=".DialogActivity" />
+        <activity
+            android:name=".DialogGroupActivity"
+            android:label="Диалог" />
         <activity android:name=".SpeechStudioActivity" />
-        <activity android:name=".GrammarActivity" android:label="Граматика"/>
-        <activity android:name=".LesonActivity" android:label="Сабактар"/>
+        <activity
+            android:name=".GrammarActivity"
+            android:label="Граматика" />
+        <activity
+            android:name=".LesonActivity"
+            android:label="Сабактар" />
+        <activity android:name=".FindWordActivity" />
+        <activity android:name=".FinishSentenceActivity"></activity>
     </application>
 
 </manifest>

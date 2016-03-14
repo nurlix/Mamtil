@@ -4,6 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/main_background"
+    android:gravity="center"
     tools:context="com.ulutsoft.mamtil.LesonActivity">
+
+    <Button
+        android:id="@+id/lesson_words"
+        android:text="Соз табуу"
+        android:layout_width="200dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/lesson_complete_sentence"
+        android:layout_marginTop="50dp"
+        android:text="Суйломду бутуруу"
+        android:layout_width="200dp"
+        android:layout_height="60dp" />
 
 </LinearLayout>

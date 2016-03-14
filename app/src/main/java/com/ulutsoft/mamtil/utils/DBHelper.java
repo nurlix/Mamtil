@@ -30,6 +30,25 @@ public class DBHelper extends SQLiteOpenHelper {
     private String DB_PATH;
     private static String DB_NAME = "Database.db";
 
+    public List<Word> LessonWords(String to) {
+        List<Word> wordlist = new ArrayList<Word>();
+        String selectQuery = "SELECT _id, kg, " + to + ", audio text FROM Words ORDER BY RANDOM() limit 10";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Word word = new Word();
+                word.setId(cursor.getInt(0));
+                word.setLangFrom(cursor.getString(1));
+                word.setLangTo(cursor.getString(2));
+                word.setAudio(cursor.getString(3));
+                wordlist.add(word);
+            } while (cursor.moveToNext());
+        }
+        return wordlist;
+    }
+
     public List<Word> Words(String from, String to, String ch) {
         List<Word> wordlist = new ArrayList<Word>();
         String selectQuery = "SELECT _id, " + from + ", " + to + ", audio text FROM Words where UPPER(" + from + ") like UPPER('" + ch + "%')";
