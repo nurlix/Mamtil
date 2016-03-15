@@ -26,10 +26,14 @@ public class ConversationActivity extends Activity implements SearchView.OnQuery
     private ConversationAdapter conversationAdapter;
     private MediaPlayer mp;
 
+    private App app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
+
+        app = (App)getApplicationContext();
 
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
@@ -45,7 +49,7 @@ public class ConversationActivity extends Activity implements SearchView.OnQuery
         }
 
         int category = this.getIntent().getIntExtra("category", 0);
-        conversationAdapter = new ConversationAdapter(this, dbHelper.Conversations("ru", "kg", category));
+        conversationAdapter = new ConversationAdapter(this, dbHelper.Conversations(app.getLang(), category));
         listView = (ListView)findViewById(R.id.conversation_list);
         listView.setAdapter(conversationAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

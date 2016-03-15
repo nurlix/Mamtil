@@ -23,11 +23,14 @@ public class VocabularyActivity extends Activity implements SearchView.OnQueryTe
 
     private String[] en_alpha = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     private String[] ru_alpha = {"А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "Й", "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ъ", "Ы", "Ь", "Э", "Ю", "Я"};
+    private String[] chars;
 
     private ExpandableListView words_list;
     private WordsAdapter wordsAdapter;
     private List<Alphabet> alphabets;
     private SearchView search;
+
+    private App app;
 
     private int previousGroup = -1;
 
@@ -35,6 +38,8 @@ public class VocabularyActivity extends Activity implements SearchView.OnQueryTe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary);
+
+        app = (App)getApplicationContext();
 
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
@@ -51,8 +56,14 @@ public class VocabularyActivity extends Activity implements SearchView.OnQueryTe
 
         alphabets = new ArrayList<>();
 
-        for(String ch : ru_alpha) {
-            List<Word> wordlist = dbHelper.Words("ru", "kg", ch);
+        if(app.getLang() == "ru") {
+            chars = ru_alpha;
+        } else {
+            chars = en_alpha;
+        }
+
+        for(String ch : chars) {
+            List<Word> wordlist = dbHelper.Words(app.getLang(), ch);
             if(wordlist.size() != 0) {
                 Alphabet alphabet = new Alphabet();
                 alphabet.setCh(ch);

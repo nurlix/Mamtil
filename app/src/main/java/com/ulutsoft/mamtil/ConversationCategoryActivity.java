@@ -25,10 +25,14 @@ public class ConversationCategoryActivity extends Activity  implements SearchVie
     private SearchView search;
     private ConversationCategoryAdapter conversationCategoryAdapter;
 
+    private App app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation_category);
+
+        app = (App)getApplicationContext();
 
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
@@ -43,7 +47,7 @@ public class ConversationCategoryActivity extends Activity  implements SearchVie
             e.printStackTrace();
         }
 
-        conversationCategoryAdapter = new ConversationCategoryAdapter(this, dbHelper.Categories("category_ru"));
+        conversationCategoryAdapter = new ConversationCategoryAdapter(this, dbHelper.Categories(app.getLang()));
         listView = (ListView)findViewById(R.id.conversation_category_list);
         listView.setAdapter(conversationCategoryAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

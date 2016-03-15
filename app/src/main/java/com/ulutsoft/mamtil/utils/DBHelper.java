@@ -30,9 +30,9 @@ public class DBHelper extends SQLiteOpenHelper {
     private String DB_PATH;
     private static String DB_NAME = "Database.db";
 
-    public List<Word> LessonWords(String to) {
+    public List<Word> LessonWords(String lang) {
         List<Word> wordlist = new ArrayList<Word>();
-        String selectQuery = "SELECT _id, kg, " + to + ", audio text FROM Words ORDER BY RANDOM() limit 10";
+        String selectQuery = "SELECT _id, " + lang + ", kg, audio text FROM Words ORDER BY RANDOM() limit 10";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -49,9 +49,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return wordlist;
     }
 
-    public List<Word> Words(String from, String to, String ch) {
+    public List<Word> Words(String lang, String ch) {
         List<Word> wordlist = new ArrayList<Word>();
-        String selectQuery = "SELECT _id, " + from + ", " + to + ", audio text FROM Words where UPPER(" + from + ") like UPPER('" + ch + "%')";
+        String selectQuery = "SELECT _id, " + lang + ", kg, audio text FROM Words where UPPER(" + lang + ") like UPPER('" + ch + "%')";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -86,9 +86,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return categories;
     }
 
-    public List<Conversation> ConversationGroup(String from, String to, int category, int group) {
+    public List<Conversation> ConversationGroup(String lang, int category, int group) {
         List<Conversation> conversations = new ArrayList<Conversation>();
-        String selectQuery = "SELECT _id, " + from + ", " + to + ", audio text FROM conversations where category = " + category + " and conversation_group = " + group + " order by conversation_order";
+        String selectQuery = "SELECT _id, " + lang + ", kg, audio text FROM conversations where category = " + category + " and conversation_group = " + group + " order by conversation_order";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -105,9 +105,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return conversations;
     }
 
-    public List<Conversation> Conversations(String from, String to, int category) {
+    public List<Conversation> Conversations(String lang, int category) {
         List<Conversation> conversations = new ArrayList<Conversation>();
-        String selectQuery = "SELECT _id, " + from + ", " + to + ", audio text FROM conversations where category = " + category;
+        String selectQuery = "SELECT _id, " + lang + ", kg, audio text FROM conversations where category = " + category;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -141,9 +141,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return grammarList;
     }
 
-    public List<String> GrammarContent(String from, String to, int id) {
+    public List<String> GrammarContent(String lang, int id) {
         List<String> content = new ArrayList<String>();
-        String selectQuery = "SELECT " + from + ", " + to + " FROM grammar where _id = " + id;
+        String selectQuery = "SELECT " + lang + ", kg FROM grammar where _id = " + id;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 

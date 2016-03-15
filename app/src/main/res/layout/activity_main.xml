@@ -7,9 +7,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/main_background"
-        android:layout_height="50dp"
+        android:padding="20dp"
         android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/lang_group"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/lang_ru"
+                android:text=" Русский"
+                android:textSize="20sp"
+                android:checked="true"
+                android:drawableLeft="@drawable/ru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/lang_en"
+                android:text= " English"
+                android:textSize="20sp"
+                android:drawableLeft="@drawable/en"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
 
     </LinearLayout>
 

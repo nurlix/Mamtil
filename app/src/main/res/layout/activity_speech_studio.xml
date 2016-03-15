@@ -12,7 +12,7 @@
         android:id="@+id/words"
         android:layout_margin="10dp"
         android:layout_weight="1"
-        android:childDivider="#FFFFFF"
+        android:childDivider="#fdc656"
         android:divider="#fdc656"
         android:dividerHeight="0.5dp"
         android:layout_width="match_parent"

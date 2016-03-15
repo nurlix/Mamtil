@@ -3,7 +3,10 @@ package com.ulutsoft.mamtil;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,12 +26,16 @@ public class FindWordActivity extends Activity {
     LinearLayout word;
     int index;
 
+    App app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_word);
 
         overridePendingTransition(R.anim.top_in, R.anim.top_in);
+
+        app = (App)getApplicationContext();
 
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
@@ -43,7 +50,7 @@ public class FindWordActivity extends Activity {
             e.printStackTrace();
         }
 
-        wordlist = dbHelper.LessonWords("en");
+        wordlist = dbHelper.LessonWords(app.getLang());
         index = 0;
 
         hidden_word = (TextView)findViewById(R.id.hidden_word);
@@ -71,8 +78,12 @@ public class FindWordActivity extends Activity {
         word.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hidden_word.setText(wordlist.get(index).getLangFrom());
-                hidden_word.setVisibility(View.VISIBLE);
+                if(hidden_word.getVisibility() != View.VISIBLE) {
+                    hidden_word.setText(wordlist.get(index).getLangFrom());
+                    hidden_word.setVisibility(View.VISIBLE);
+                    Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+                    hidden_word.startAnimation(animation1);
+                }
             }
         });
     }

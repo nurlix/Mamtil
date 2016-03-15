@@ -23,17 +23,22 @@ public class SpeechStudioActivity extends Activity implements SearchView.OnQuery
 
     String[] en_alpha = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     String[] ru_alpha = {"А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "Й", "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ъ", "Ы", "Ь", "Э", "Ю", "Я"};
+    String[] chars;
 
     ExpandableListView words_list;
     WordsAdapter wordsAdapter;
     List<Alphabet> alphabets;
-    private SearchView search;
+    SearchView search;
     int previousGroup = -1;
+
+    App app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speech_studio);
+
+        app = (App)getApplicationContext();
 
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
@@ -50,8 +55,14 @@ public class SpeechStudioActivity extends Activity implements SearchView.OnQuery
 
         alphabets = new ArrayList<>();
 
-        for(String ch : ru_alpha) {
-            List<Word> wordlist = dbHelper.Words("ru", "kg", ch);
+        if(app.getLang() == "ru") {
+            chars = ru_alpha;
+        } else {
+            chars = en_alpha;
+        }
+
+        for(String ch : chars) {
+            List<Word> wordlist = dbHelper.Words(app.getLang(), ch);
             if(wordlist.size() != 0) {
                 Alphabet alphabet = new Alphabet();
                 alphabet.setCh(ch);

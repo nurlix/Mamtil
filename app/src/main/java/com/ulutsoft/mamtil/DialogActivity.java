@@ -20,10 +20,14 @@ public class DialogActivity extends Activity {
     DialogAdapter dialogAdapter;
     MediaPlayer mp = null;
 
+    App app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
+
+        app = (App)getApplicationContext();
 
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
@@ -41,7 +45,7 @@ public class DialogActivity extends Activity {
         int category = this.getIntent().getIntExtra("category", 0);
         //int group = this.getIntent().getIntExtra("category", 0);
 
-        dialogAdapter = new DialogAdapter(this, dbHelper.ConversationGroup("ru", "kg", category, 1));
+        dialogAdapter = new DialogAdapter(this, dbHelper.ConversationGroup(app.getLang(), category, 1));
 
         conversation_list = (ListView)findViewById(R.id.conversation_list);
         conversation_list.setAdapter(dialogAdapter);

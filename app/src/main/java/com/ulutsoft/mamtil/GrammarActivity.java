@@ -25,12 +25,16 @@ public class GrammarActivity extends Activity {
     private GrammarAdapter grammarAdapter;
     private DBHelper dbHelper;
 
+    App app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         menuLayout = (MenuLayout) getLayoutInflater().inflate(R.layout.activity_grammar, null);
         setContentView(menuLayout);
+
+        app = (App)getApplicationContext();
 
         from_word = (TextView)findViewById(R.id.from_word);
         to_word = (TextView)findViewById(R.id.to_word);
@@ -54,7 +58,7 @@ public class GrammarActivity extends Activity {
         grammar_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                List<String> strings = dbHelper.GrammarContent("ru", "kg", grammarAdapter.getItem(position).getId());
+                List<String> strings = dbHelper.GrammarContent(app.getLang(), grammarAdapter.getItem(position).getId());
                 from_word.setText(Html.fromHtml(strings.get(0)));
                 to_word.setText(Html.fromHtml(strings.get(1)));
                 menuLayout.toggleMenu();
