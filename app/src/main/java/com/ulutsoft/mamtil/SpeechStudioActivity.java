@@ -37,6 +37,7 @@ public class SpeechStudioActivity extends Activity implements SearchView.OnQuery
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speech_studio);
+        overridePendingTransition(R.anim.right_in, R.anim.right_in);
 
         app = (App)getApplicationContext();
 

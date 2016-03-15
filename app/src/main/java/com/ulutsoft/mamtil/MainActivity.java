@@ -41,10 +41,63 @@ public class MainActivity extends Activity {
 
         menuLayout = (MenuLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
         setContentView(menuLayout);
+        overridePendingTransition(R.anim.top_in, R.anim.top_in);
 
         app = (App)getApplicationContext();
 
-        overridePendingTransition(R.anim.top_in, R.anim.top_in);
+        button_vocabulary = (Button)findViewById(R.id.button_vocabulary);
+        button_vocabulary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, VocabularyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button_conversation_group = (Button)findViewById(R.id.button_conversation_group);
+        button_conversation_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ConversationCategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button_dialog = (Button)findViewById(R.id.button_dialog);
+        button_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DialogGroupActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button_speech_studio = (Button)findViewById(R.id.button_speech_studio);
+        button_speech_studio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SpeechStudioActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button_grammar = (Button)findViewById(R.id.button_grammar);
+        button_grammar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GrammarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button_test = (Button)findViewById(R.id.button_test);
+        button_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LesonActivity.class);
+                startActivity(intent);
+            }
+        });
 
         lang_ru = (RadioButton)findViewById(R.id.lang_ru);
         lang_en = (RadioButton)findViewById(R.id.lang_en);
@@ -67,76 +120,16 @@ public class MainActivity extends Activity {
             }
         });
 
+        setLang();
+    }
+
+    void changeInterface() {
         if(app.getLang() == "ru") {
             titles = ru_titles;
         } else {
             titles = en_titles;
         }
 
-        button_vocabulary = (Button)findViewById(R.id.button_vocabulary);
-        button_vocabulary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, VocabularyActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.right_in, R.anim.right_in);
-            }
-        });
-
-        button_conversation_group = (Button)findViewById(R.id.button_conversation_group);
-        button_conversation_group.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ConversationCategoryActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.right_in, R.anim.right_in);
-            }
-        });
-
-        button_dialog = (Button)findViewById(R.id.button_dialog);
-        button_dialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DialogGroupActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.right_in, R.anim.right_in);
-            }
-        });
-
-        button_speech_studio = (Button)findViewById(R.id.button_speech_studio);
-        button_speech_studio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SpeechStudioActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.right_in, R.anim.right_in);
-            }
-        });
-
-        button_grammar = (Button)findViewById(R.id.button_grammar);
-        button_grammar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GrammarActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.right_in, R.anim.right_in);
-            }
-        });
-
-        button_test = (Button)findViewById(R.id.button_test);
-        button_test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LesonActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.right_in, R.anim.right_in);
-            }
-        });
-
-        setLang();
-    }
-
-    void changeInterface() {
         button_vocabulary.setText(titles[0]);
         button_conversation_group.setText(titles[1]);
         button_dialog.setText(titles[2]);
@@ -155,17 +148,6 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    public void onBackPressed() {
-        if(menuLayout.getMenuState() == MenuLayout.MenuState.OPEN) {
-            menuLayout.toggleMenu();
-            setTitle("Башкы бет");
-            changeInterface();
-        } else {
-            finish();
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
@@ -178,14 +160,25 @@ public class MainActivity extends Activity {
             case R.id.settings :
                 if(menuLayout.getMenuState() == MenuLayout.MenuState.OPEN) {
                     setTitle("Башкы бет");
+                    changeInterface();
                 } else {
                     setTitle("Настройкалар");
                 }
                 menuLayout.toggleMenu();
-                changeInterface();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(menuLayout.getMenuState() == MenuLayout.MenuState.OPEN) {
+            menuLayout.toggleMenu();
+            setTitle("Башкы бет");
+            changeInterface();
+        } else {
+            finish();
         }
     }
 }

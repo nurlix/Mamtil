@@ -15,6 +15,7 @@ public class LesonActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leson);
+        overridePendingTransition(R.anim.right_in, R.anim.right_in);
 
         GuesWord = (Button)findViewById(R.id.lesson_words);
         GuesWord.setOnClickListener(new View.OnClickListener() {

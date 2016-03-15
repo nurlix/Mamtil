@@ -31,6 +31,7 @@ public class ConversationCategoryActivity extends Activity  implements SearchVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation_category);
+        overridePendingTransition(R.anim.right_in, R.anim.right_in);
 
         app = (App)getApplicationContext();
 

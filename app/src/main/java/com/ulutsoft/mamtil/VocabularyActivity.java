@@ -40,6 +40,7 @@ public class VocabularyActivity extends Activity implements SearchView.OnQueryTe
         setContentView(R.layout.activity_vocabulary);
 
         app = (App)getApplicationContext();
+        overridePendingTransition(R.anim.right_in, R.anim.right_in);
 
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {

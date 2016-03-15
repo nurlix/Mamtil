@@ -30,6 +30,7 @@ public class GrammarActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.right_in, R.anim.right_in);
 
         menuLayout = (MenuLayout) getLayoutInflater().inflate(R.layout.activity_grammar, null);
         setContentView(menuLayout);
