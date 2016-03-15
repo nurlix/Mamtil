@@ -12,35 +12,37 @@
     <TextView
         android:id="@+id/sentence"
         android:text="Суйломду бутурунуз ... "
+        android:background="#FFFFFF"
         android:layout_margin="20dp"
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/option1"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
     <Button
         android:id="@+id/option2"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
     <Button
         android:id="@+id/option3"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
     <Button
         android:id="@+id/option4"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp" />

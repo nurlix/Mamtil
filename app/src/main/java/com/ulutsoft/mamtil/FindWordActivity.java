@@ -52,7 +52,7 @@ public class FindWordActivity extends Activity {
         from_word.setText(wordlist.get(index).getLangTo());
 
         button_next = (Button)findViewById(R.id.button_next);
-        button_next.setText((index + 1) + " из 10");
+        button_next.setText((index + 1) + "  из 10");
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
