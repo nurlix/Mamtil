@@ -1,7 +1,6 @@
 package com.ulutsoft.mamtil;
 
 import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,13 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SearchView;
 
 import com.ulutsoft.mamtil.utils.MenuLayout;
 
 public class MainActivity extends Activity {
 
     MenuLayout menuLayout;
+
     Button button_vocabulary;
     Button button_conversation_group;
     Button button_dialog;
@@ -117,14 +116,24 @@ public class MainActivity extends Activity {
                     default:
                         break;
                 }
+                changeInterface();
             }
         });
 
         setLang();
     }
 
+    void setLang() {
+        if(app.getLang().equals("ru")) {
+            lang_ru.setChecked(true);
+        } else {
+            lang_en.setChecked(true);
+        }
+        changeInterface();
+    }
+
     void changeInterface() {
-        if(app.getLang() == "ru") {
+        if(app.getLang().equals("ru")) {
             titles = ru_titles;
         } else {
             titles = en_titles;
@@ -136,15 +145,6 @@ public class MainActivity extends Activity {
         button_speech_studio.setText(titles[3]);
         button_grammar.setText(titles[4]);
         button_test.setText(titles[5]);
-    }
-
-    void setLang() {
-        if(app.getLang() == "ru") {
-            lang_ru.setChecked(true);
-        } else {
-            lang_en.setChecked(true);
-        }
-        changeInterface();
     }
 
     @Override
