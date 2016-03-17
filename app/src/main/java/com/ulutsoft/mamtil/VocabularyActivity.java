@@ -57,7 +57,7 @@ public class VocabularyActivity extends Activity implements SearchView.OnQueryTe
 
         alphabets = new ArrayList<>();
 
-        if(app.getLang() == "ru") {
+        if(app.getLang().equals("ru")) {
             chars = ru_alpha;
         } else {
             chars = en_alpha;
@@ -103,7 +103,7 @@ public class VocabularyActivity extends Activity implements SearchView.OnQueryTe
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
 
-        SearchManager searchManager = (SearchManager) getSystemService(this.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
 
         search = (SearchView) menu.findItem(R.id.search).getActionView();
         search.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
