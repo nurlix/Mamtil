@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import com.ulutsoft.mamtil.adapters.ConversationAdapter;
 import com.ulutsoft.mamtil.utils.DBHelper;
@@ -75,7 +74,7 @@ public class ConversationActivity extends Activity implements SearchView.OnQuery
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
 
-        SearchManager searchManager = (SearchManager) getSystemService(this.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
 
         search = (SearchView) menu.findItem(R.id.search).getActionView();
         search.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));

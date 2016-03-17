@@ -74,7 +74,7 @@ public class ConversationCategoryActivity extends Activity  implements SearchVie
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
 
-        SearchManager searchManager = (SearchManager) getSystemService(this.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
 
         search = (SearchView) menu.findItem(R.id.search).getActionView();
         search.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
