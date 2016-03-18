@@ -6,6 +6,12 @@
     android:background="#FFFFFF"
     android:orientation="horizontal">
 
+    <View
+        android:background="#fdc656"
+        android:layout_marginRight="10dp"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"/>
+
     <ImageView
         android:id="@+id/icon"
         android:padding="10dp"

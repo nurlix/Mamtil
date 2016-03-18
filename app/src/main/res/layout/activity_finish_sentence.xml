@@ -12,11 +12,11 @@
     <TextView
         android:id="@+id/sentence"
         android:text="Суйломду бутурунуз ... "
-        android:background="#FFFFFF"
-        android:layout_margin="20dp"
-        android:padding="10dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:layout_margin="10dp"
+        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal" />
 
     <Button
