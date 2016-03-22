@@ -16,8 +16,8 @@
         android:groupIndicator="@null"
         android:layout_margin="10dp"
         android:layout_weight="1"
-        android:childDivider="#fdc656"
-        android:divider="#fdc656"
+        android:childDivider="@color/main_color"
+        android:divider="@color/main_color"
         android:dividerHeight="0.5dp"/>
 
 </LinearLayout>

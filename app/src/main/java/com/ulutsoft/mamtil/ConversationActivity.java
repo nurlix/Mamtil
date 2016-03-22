@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.ulutsoft.mamtil.adapters.ConversationAdapter;
 import com.ulutsoft.mamtil.utils.DBHelper;
@@ -21,6 +22,7 @@ import java.sql.SQLException;
 public class ConversationActivity extends Activity implements SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
     private ListView listView;
+    private TextView header;
     private SearchView search;
     private ConversationAdapter conversationAdapter;
     private MediaPlayer mp;
@@ -48,6 +50,9 @@ public class ConversationActivity extends Activity implements SearchView.OnQuery
         }
 
         int category = this.getIntent().getIntExtra("category", 0);
+
+        header = (TextView)findViewById(R.id.header);
+        header.setText(this.getIntent().getStringExtra("title"));
         conversationAdapter = new ConversationAdapter(this, dbHelper.Conversations(app.getLang(), category));
         listView = (ListView)findViewById(R.id.conversation_list);
         listView.setAdapter(conversationAdapter);

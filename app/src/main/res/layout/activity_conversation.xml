@@ -8,10 +8,28 @@
     tools:context="com.ulutsoft.mamtil.ConversationActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/header"
+        android:text="Header"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:elevation="2dp"
+        android:background="@color/main_color"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
     <ListView
         android:id="@+id/conversation_list"
         tools:listitem="@layout/conversation"
-        android:layout_margin="10dp"
+        android:elevation="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:divider="#fdc656"
         android:dividerHeight="0.5dp"
         android:layout_width="match_parent"

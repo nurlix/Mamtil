@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -71,6 +70,7 @@ public class FindWordActivity extends Activity {
                 from_word.setText(wordlist.get(index).getLangTo());
                 button_next.setText((index + 1) + "  из 10");
                 hidden_word.setVisibility(View.GONE);
+                hidden_word.clearAnimation();
             }
         });
 
@@ -81,8 +81,8 @@ public class FindWordActivity extends Activity {
                 if(hidden_word.getVisibility() != View.VISIBLE) {
                     hidden_word.setText(wordlist.get(index).getLangFrom());
                     hidden_word.setVisibility(View.VISIBLE);
-                    Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
-                    hidden_word.startAnimation(animation1);
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+                    hidden_word.startAnimation(animation);
                 }
             }
         });
