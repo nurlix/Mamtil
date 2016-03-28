@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mamtil</string>
     <string name="lang"> English</string>
     <string name="btn_vocabulary">Vocabulary</string>
     <string name="btn_phrasebook">Phrasebook</string>

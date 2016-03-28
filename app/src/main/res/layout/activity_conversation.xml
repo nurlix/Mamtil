@@ -10,7 +10,6 @@
 
     <TextView
         android:id="@+id/header"
-        android:text="Header"
         android:gravity="center"
         android:textColor="#89000000"
         android:textStyle="bold"

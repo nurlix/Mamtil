@@ -7,6 +7,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ulutsoft.mamtil.objects.Word;
@@ -15,17 +16,20 @@ import com.ulutsoft.mamtil.utils.DBHelper;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class FindWordActivity extends Activity {
 
     TextView from_word;
     TextView hidden_word;
     Button button_next;
+    Button button_question;
     List<Word> wordlist;
-    LinearLayout word;
+    RelativeLayout word;
     int index;
 
     App app;
+    Map<String, String> strings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class FindWordActivity extends Activity {
         overridePendingTransition(R.anim.top_in, R.anim.top_in);
 
         app = (App)getApplicationContext();
+        strings = app.getStrings();
 
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
@@ -58,7 +63,7 @@ public class FindWordActivity extends Activity {
         from_word.setText(wordlist.get(index).getLangTo());
 
         button_next = (Button)findViewById(R.id.button_next);
-        button_next.setText((index + 1) + "  из 10");
+        button_next.setText((index + 1) + " " + strings.get("text_of") + " 10");
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,14 +73,15 @@ public class FindWordActivity extends Activity {
                     index = 0;
                 }
                 from_word.setText(wordlist.get(index).getLangTo());
-                button_next.setText((index + 1) + "  из 10");
+                button_next.setText((index + 1) + " " + strings.get("text_of") + " 10");
                 hidden_word.setVisibility(View.GONE);
                 hidden_word.clearAnimation();
+                button_question.setVisibility(View.VISIBLE);
             }
         });
 
-        word = (LinearLayout)findViewById(R.id.word);
-        word.setOnClickListener(new View.OnClickListener() {
+        button_question = (Button)findViewById(R.id.button_question);
+        button_question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(hidden_word.getVisibility() != View.VISIBLE) {
@@ -83,9 +89,12 @@ public class FindWordActivity extends Activity {
                     hidden_word.setVisibility(View.VISIBLE);
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
                     hidden_word.startAnimation(animation);
+                    button_question.setVisibility(View.GONE);
                 }
             }
         });
+
+        word = (RelativeLayout)findViewById(R.id.word);
     }
 
     @Override

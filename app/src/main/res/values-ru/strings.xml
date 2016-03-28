@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мамтил</string>
+    <string name="lang"> Русский</string>
+    <string name="btn_vocabulary">Словарь</string>
+    <string name="btn_phrasebook">Разгаворник</string>
+    <string name="btn_conversation">Диалог</string>
+    <string name="btn_speech">Запись</string>
+    <string name="btn_grammar">Граматика</string>
+    <string name="btn_test">Тест</string>
+
+    <string name="btn_record">Запись</string>
+    <string name="btn_stop">Стоп</string>
+    <string name="btn_play">Воспроизвести</string>
+    <string name="btn_tryAgain">Попробовать снова</string>
+
+    <string name="text_click_record">Нажмите &lt;Запись&gt;</string>
+    <string name="text_recording">Идет запись ...</string>
+    <string name="text_record_ended">Запись завершен!\n Нажмите &lt;Воспроизвести&gt;</string>
+
+    <string name="guess_word">Угадай Слово</string>
+    <string name="text_of"> из </string>
+
+    <string name="title_settings">Настройки</string>
+    <string name="title_home">Начальная страница</string>
+
+    <string name="color_orange"> Оранжевый</string>
+    <string name="color_green"> Зеленный</string>
+    <string name="color_blue"> Синий</string>
+</resources>

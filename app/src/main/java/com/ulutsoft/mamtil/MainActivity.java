@@ -8,31 +8,38 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.ulutsoft.mamtil.utils.MenuLayout;
 
+import java.util.Map;
+
 public class MainActivity extends Activity {
 
     MenuLayout menuLayout;
-
     Button button_vocabulary;
-    Button button_conversation_group;
-    Button button_dialog;
+    Button button_phrasebook;
+    Button button_conversation;
     Button button_speech_studio;
     Button button_grammar;
     Button button_test;
 
     RadioButton lang_ru;
     RadioButton lang_en;
+    RadioButton lang_tr;
     RadioGroup lang_group;
 
-    App app;
+    RadioButton color_orange;
+    RadioButton color_green;
+    RadioButton color_blue;
+    RadioGroup color_group;
 
-    String[] ru_titles = { "Словарь", "Разгаворник", "Диалог", "Запись", "Граматика", "Тест" };
-    String[] en_titles = { "Vocabulary", "Phrasebook", "Conversation", "Speech", "Grammar", "Test" };
-    String[] titles;
+    LinearLayout layout_home;
+
+    App app;
+    Map<String, String> strings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +47,28 @@ public class MainActivity extends Activity {
 
         menuLayout = (MenuLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
         setContentView(menuLayout);
-        overridePendingTransition(R.anim.top_in, R.anim.top_in);
+
+        layout_home = (LinearLayout)findViewById(R.id.layout_home);
 
         app = (App)getApplicationContext();
+        strings = app.getStrings();
+
+        String colorstr = app.getbgColor();
+        int color = R.color.clorange;
+
+        if(colorstr.equals("orange")) {
+            color = R.color.clorange;
+        } else if(colorstr.equals("green")) {
+            color = R.color.clgreen;
+        } else {
+            color = R.color.clblue;
+        }
+
+        menuLayout.setBackgroundColor(getResources().getColor(color));
+        layout_home.setBackgroundColor(getResources().getColor(color));
 
         button_vocabulary = (Button)findViewById(R.id.button_vocabulary);
+        button_vocabulary.setText(strings.get("btn_vocabulary"));
         button_vocabulary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,8 +77,9 @@ public class MainActivity extends Activity {
             }
         });
 
-        button_conversation_group = (Button)findViewById(R.id.button_conversation_group);
-        button_conversation_group.setOnClickListener(new View.OnClickListener() {
+        button_phrasebook = (Button)findViewById(R.id.button_phrasebook);
+        button_phrasebook.setText(strings.get("btn_phrasebook"));
+        button_phrasebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ConversationCategoryActivity.class);
@@ -62,8 +87,9 @@ public class MainActivity extends Activity {
             }
         });
 
-        button_dialog = (Button)findViewById(R.id.button_dialog);
-        button_dialog.setOnClickListener(new View.OnClickListener() {
+        button_conversation = (Button)findViewById(R.id.button_conversation);
+        button_conversation.setText(strings.get("btn_conversation"));
+        button_conversation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DialogGroupActivity.class);
@@ -72,6 +98,7 @@ public class MainActivity extends Activity {
         });
 
         button_speech_studio = (Button)findViewById(R.id.button_speech_studio);
+        button_speech_studio.setText(strings.get("btn_speech"));
         button_speech_studio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +108,7 @@ public class MainActivity extends Activity {
         });
 
         button_grammar = (Button)findViewById(R.id.button_grammar);
+        button_grammar.setText(strings.get("btn_grammar"));
         button_grammar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +118,7 @@ public class MainActivity extends Activity {
         });
 
         button_test = (Button)findViewById(R.id.button_test);
+        button_test.setText(strings.get("btn_test"));
         button_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,51 +129,109 @@ public class MainActivity extends Activity {
 
         lang_ru = (RadioButton)findViewById(R.id.lang_ru);
         lang_en = (RadioButton)findViewById(R.id.lang_en);
+        lang_tr = (RadioButton)findViewById(R.id.lang_tr);
+
+        setLangs();
+
         lang_group = (RadioGroup)findViewById(R.id.lang_group);
         lang_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                String languageToLoad = "ru";
+
                 switch (checkedId) {
                     case -1:
                         break;
                     case R.id.lang_ru:
+                        languageToLoad = "ru";
                         app.setLang("ru");
                         break;
                     case R.id.lang_en:
+                        languageToLoad = "en";
+                        app.setLang("en");
+                        break;
+                    case R.id.lang_tr:
+                        languageToLoad = "en";
                         app.setLang("en");
                         break;
                     default:
                         break;
                 }
-                changeInterface();
+                changeInterface(languageToLoad);
+
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
             }
         });
 
-        setLang();
+        color_orange = (RadioButton)findViewById(R.id.color_orange);
+        color_green = (RadioButton)findViewById(R.id.color_green);
+        color_blue = (RadioButton)findViewById(R.id.color_blue);
+
+        setColors();
+
+        color_group = (RadioGroup)findViewById(R.id.bgcolor_group);
+        color_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case -1:
+                        break;
+                    case R.id.color_orange:
+                        app.setbgColor("orange");
+                        break;
+                    case R.id.color_green:
+                        app.setbgColor("green");
+                        break;
+                    case R.id.color_blue:
+                        app.setbgColor("blue");
+                        break;
+                    default:
+                        break;
+                }
+
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
     }
 
-    void setLang() {
-        if(app.getLang().equals("ru")) {
+    private void changeInterface(String languageToLoad) {
+
+    }
+
+    void setLangs() {
+        String lang = app.getLang();
+
+        if(lang.equals("ru")) {
             lang_ru.setChecked(true);
-        } else {
+        }
+
+        if(lang.equals("en")) {
             lang_en.setChecked(true);
         }
-        changeInterface();
+
+        if(lang.equals("tr")) {
+            lang_tr.setChecked(true);
+        }
     }
 
-    void changeInterface() {
-        if(app.getLang().equals("ru")) {
-            titles = ru_titles;
-        } else {
-            titles = en_titles;
+    void setColors() {
+
+        String color = app.getbgColor();
+        if(color.equals("orange")) {
+            color_orange.setChecked(true);
         }
 
-        button_vocabulary.setText(titles[0]);
-        button_conversation_group.setText(titles[1]);
-        button_dialog.setText(titles[2]);
-        button_speech_studio.setText(titles[3]);
-        button_grammar.setText(titles[4]);
-        button_test.setText(titles[5]);
+        if(color.equals("green")) {
+            color_green.setChecked(true);
+        }
+
+        if(color.equals("blue")) {
+            color_blue.setChecked(true);
+        }
     }
 
     @Override
@@ -159,10 +246,10 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.settings :
                 if(menuLayout.getMenuState() == MenuLayout.MenuState.OPEN) {
-                    setTitle("Башкы бет");
-                    changeInterface();
+                    //setTitle(titleHome);
+                    //changeInterface();
                 } else {
-                    setTitle("Настройкалар");
+                    //setTitle(titleMenu);
                 }
                 menuLayout.toggleMenu();
                 return true;
@@ -175,8 +262,8 @@ public class MainActivity extends Activity {
     public void onBackPressed() {
         if(menuLayout.getMenuState() == MenuLayout.MenuState.OPEN) {
             menuLayout.toggleMenu();
-            setTitle("Башкы бет");
-            changeInterface();
+            //setTitle(titleHome);
+            //changeInterface();
         } else {
             finish();
         }

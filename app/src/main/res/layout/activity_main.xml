@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.ulutsoft.mamtil.utils.MenuLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activitymain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layout_settings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/main_background"
@@ -35,11 +37,68 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <RadioButton
+                android:id="@+id/lang_tr"
+                android:text= " Turkce"
+                android:textSize="20sp"
+                android:drawableLeft="@drawable/tr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
         </RadioGroup>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
+
+        <RadioGroup
+            android:id="@+id/bgcolor_group"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/color_orange"
+                android:text="@string/color_orange"
+                android:textSize="20sp"
+                android:checked="true"
+                android:drawableLeft="#f9c72a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/color_green"
+                android:text= "@string/color_green"
+                android:textSize="20sp"
+                android:drawableLeft="#50a436"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/color_blue"
+                android:text= "@string/color_blue"
+                android:textSize="20sp"
+                android:drawableLeft="#3678a4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:text="Тиркеменин ээси Мамтил \n Тиркемени иштеп чыккан УлутСофт"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_home"
         android:orientation="vertical"
         android:background="@drawable/main_background"
         android:gravity="center"
@@ -59,7 +118,7 @@
 
                 <Button
                     android:id="@+id/button_vocabulary"
-                    android:text="Создук"
+                    android:text="@string/btn_vocabulary"
                     android:padding="15dp"
                     android:drawableTop="@android:drawable/ic_menu_help"
                     android:layout_column="0"
@@ -68,8 +127,8 @@
                     android:layout_margin="5dp"/>
 
                 <Button
-                    android:id="@+id/button_conversation_group"
-                    android:text="Разгаворник"
+                    android:id="@+id/button_phrasebook"
+                    android:text="@string/btn_phrasebook"
                     android:padding="15dp"
                     android:drawableTop="@android:drawable/ic_menu_manage"
                     android:layout_column="1"
@@ -83,8 +142,8 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/button_dialog"
-                    android:text="Диалог"
+                    android:id="@+id/button_conversation"
+                    android:text="@string/btn_conversation"
                     android:padding="15dp"
                     android:drawableTop="@android:drawable/ic_dialog_info"
                     android:layout_column="0"
@@ -94,7 +153,7 @@
 
                 <Button
                     android:id="@+id/button_speech_studio"
-                    android:text="Спиич студио"
+                    android:text="@string/btn_speech"
                     android:padding="15dp"
                     android:drawableTop="@android:drawable/ic_btn_speak_now"
                     android:layout_column="1"
@@ -109,7 +168,7 @@
 
                 <Button
                     android:id="@+id/button_grammar"
-                    android:text="Граматика"
+                    android:text="@string/btn_grammar"
                     android:layout_column="0"
                     android:layout_width="80dp"
                     android:layout_height="90dp"
@@ -117,7 +176,7 @@
 
                 <Button
                     android:id="@+id/button_test"
-                    android:text="Тест Кнопка 3"
+                    android:text="@string/btn_test"
                     android:layout_column="1"
                     android:layout_width="80dp"
                     android:layout_height="90dp"

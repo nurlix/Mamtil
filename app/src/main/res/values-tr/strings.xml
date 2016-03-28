@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mamtil</string>
+    <string name="lang"> Türkçe</string>
+    <string name="btn_vocabulary">Sözlük</string>
+    <string name="btn_phrasebook">Разгаворник</string>
+    <string name="btn_conversation">Diyalog</string>
+    <string name="btn_speech">Kayıt</string>
+    <string name="btn_grammar">Dilbilgisi</string>
+    <string name="btn_test">Test</string>
+
+    <string name="btn_record">Kayıt</string>
+    <string name="btn_stop">Dur</string>
+    <string name="btn_play">Oynat</string>
+    <string name="btn_tryAgain">Tekrar deneyin</string>
+
+    <string name="text_click_record">&lt;Kayıtı&gt; basın</string>
+    <string name="text_recording">Kayıting ...</string>
+    <string name="text_record_ended">Kayıt bitti!\n &lt;Oynatı&gt; basın</string>
+
+    <string name="guess_word">Kelimeyi bul</string>
+    <string name="text_of"> из </string>
+
+    <string name="title_settings">Ayarlar</string>
+    <string name="title_home">Ev</string>
+
+    <string name="color_orange"> Turuncu</string>
+    <string name="color_green"> Yeşil</string>
+    <string name="color_blue"> Mavi</string>
+</resources>

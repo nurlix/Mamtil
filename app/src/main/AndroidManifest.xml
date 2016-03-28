@@ -14,36 +14,55 @@
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".MainActivity"
-            android:label="Башкы бет" />
+            android:name=".MainActivity"/>
+
         <activity
-            android:name=".VocabularyActivity"
-            android:label="Создук" />
+            android:parentActivityName=".MainActivity"
+            android:name=".VocabularyActivity" />
+
         <activity android:name=".ConversationActivity" />
+
         <activity
-            android:name=".ConversationCategoryActivity"
-            android:label="Разгаворник" />
+            android:parentActivityName=".MainActivity"
+            android:name=".ConversationCategoryActivity"/>
+
         <activity
-            android:name=".SpeechActivity"
-            android:label="Суйлошмо" />
-        <activity android:name=".DialogActivity" />
+            android:parentActivityName=".MainActivity"
+            android:name=".SpeechActivity"/>
+
         <activity
-            android:name=".DialogGroupActivity"
-            android:label="Диалог" />
-        <activity android:name=".SpeechStudioActivity" />
+            android:parentActivityName=".MainActivity"
+            android:name=".DialogActivity" />
+
         <activity
-            android:name=".GrammarActivity"
-            android:label="Граматика" />
+            android:parentActivityName=".MainActivity"
+            android:name=".DialogGroupActivity"/>
+
         <activity
-            android:name=".LesonActivity"
-            android:label="Сабактар" />
-        <activity android:name=".FindWordActivity" />
-        <activity android:name=".FinishSentenceActivity"></activity>
+            android:parentActivityName=".MainActivity"
+            android:name=".SpeechStudioActivity" />
+
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".GrammarActivity"/>
+
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".LesonActivity"/>
+
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".FindWordActivity"/>
+
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".FinishSentenceActivity"/>
+
     </application>
 
 </manifest>

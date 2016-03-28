@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 public class Splash extends Activity implements Animation.AnimationListener {
@@ -13,10 +14,30 @@ public class Splash extends Activity implements Animation.AnimationListener {
     ImageView lay2;
     ImageView lay3;
 
+    FrameLayout splash;
+
+    App app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        app = (App)getApplicationContext();
+
+        String colorstr = app.getbgColor();
+        int color = R.color.clorange;
+
+        if(colorstr.equals("orange")) {
+            color = R.color.clorange;
+        } else if(colorstr.equals("green")) {
+            color = R.color.clgreen;
+        } else {
+            color = R.color.clblue;
+        }
+
+        splash = (FrameLayout)findViewById(R.id.splash);
+        splash.setBackgroundColor(getResources().getColor(color));
 
         lay1 = (ImageView)findViewById(R.id.lay1);
         Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
